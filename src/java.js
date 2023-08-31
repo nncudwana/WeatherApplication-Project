@@ -38,6 +38,12 @@ function showWeather(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+  let icon = document.querySelector("#icon");
+  icon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", "response.data.weather[0].description;");
 }
 function searchCity(city) {
   let apiKey = "3b023fa8d83fa415d28d3003da677334";
