@@ -21,19 +21,48 @@
   <body>
     <div class="container">
       <div class="weather">
-        <h1 id="city">Cape Town</h1>
+        <form>
+          <input type="text" placeholder="Search City" id="city-input" />
+          <input type="submit" value="search" />
+        </form>
+        <h1 id="city">copenhagen</h1>
         <ul>
-          <li>Tuesday 01:47</li>
-          <li>Cloudy</li>
+          <li id="currentDay">Tuesday 01:47</li>
+          <li id="description">Cloudy</li>
         </ul>
+
         <div class="row">
           <div class="col-6">
-            <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" />
-            14°C|°F
+            <div class="d-flex weather-temperature">
+              <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" />
+              <div>
+                <strong id="temperature">14</strong>
+                <span class="units">
+                  <a href="#" id="celsius-link">°C</a> |
+                  <a href="#" id="fahrenheit-link">°F</a>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <ul>
+              <li>Humidity:88%</li>
+              <li>Wind:14km/h</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
+    <h6>
+      <a
+        href="https://github.com/nncudwana/WeatherApplication-Project"
+        target="
+      _blank">
+        Source code</a
+      >
+      by Nwabisa Ncudwana
+    </h6>
+
     <script src="src/java.js"></script>
   </body>
 </html>

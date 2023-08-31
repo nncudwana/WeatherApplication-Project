@@ -1,0 +1,30 @@
+body {
+  color: bisque;
+}
+.weather {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 10px 0;
+  border: 1px solid rgb(160, 151, 151);
+  border-radius: 15px;
+  background-color: rgb(58, 167, 167);
+}
+h1 {
+  margin-bottom: 0;
+  padding-left: 25px;
+}
+li {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+ul {
+  margin-right: 0px;
+  padding-right: 0px;
+}
+form {
+  padding-left: 25px;
+}
+h6 {
+  text-align: center;
+}

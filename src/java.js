@@ -10,10 +10,8 @@ function weatherApp(current) {
     "Friday",
     "Saturday",
   ];
-  let small = document.querySelector("small");
+  let currentDay = document.querySelector("#currentDay");
   let day = days[currentDate.getDay()];
-  let year = currentDate.getFullYear();
-  let date = currentDate.getDate();
   let hour = currentDate.getHours();
   if (hour < 10) {
     hour = `0${hour}`;
@@ -22,7 +20,7 @@ function weatherApp(current) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  small.innerHTML = `${day} ${date} ${year} ${hour}:${minutes}`;
+  currentDay.innerHTML = `${day}  ${hour}:${minutes}`;
 }
 console.log(weatherApp(currentDate));
 
@@ -48,18 +46,6 @@ function search(event) {
 
 let form = document.querySelector("form");
 form.addEventListener("submit", search);
-
-function searchCurrentLocation(position) {
-  let apiKey = "3b023fa8d83fa415d28d3003da677334";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showWeather);
-}
-function currentCity(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(searchCurrentLocation);
-}
-let button = document.querySelector("#current-location");
-button.addEventListener("click", currentCity);
 
 function convertToFahrenheit(event) {
   event.preventDefault();
