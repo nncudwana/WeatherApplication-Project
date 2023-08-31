@@ -22,6 +22,9 @@ ul {
   margin-right: 0px;
   padding-right: 0px;
 }
+strong {
+  font-size: 30px;
+}
 form {
   padding-left: 25px;
 }

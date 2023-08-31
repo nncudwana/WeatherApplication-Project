@@ -25,7 +25,7 @@
           <input type="text" placeholder="Search City" id="city-input" />
           <input type="submit" value="search" />
         </form>
-        <h1 id="city">copenhagen</h1>
+        <h1 id="city"></h1>
         <ul>
           <li id="currentDay">Tuesday 01:47</li>
           <li id="description">Cloudy</li>
@@ -36,7 +36,7 @@
             <div class="d-flex weather-temperature">
               <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" />
               <div>
-                <strong id="temperature">14</strong>
+                <strong id="temperature"></strong>
                 <span class="units">
                   <a href="#" id="celsius-link">°C</a> |
                   <a href="#" id="fahrenheit-link">°F</a>
@@ -46,8 +46,8 @@
           </div>
           <div class="col-6">
             <ul>
-              <li>Humidity:88%</li>
-              <li>Wind:14km/h</li>
+              <li>Humidity:<span id="humidity"></span>%</li>
+              <li>Wind:<span id="wind"></span>km/h</li>
             </ul>
           </div>
         </div>
