@@ -31,3 +31,13 @@ form {
 h6 {
   text-align: center;
 }
+.active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+.weather-temperature .units {
+  position: relative;
+  font-size: 12px;
+  top: 5px;
+}

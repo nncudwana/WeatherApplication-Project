@@ -26,6 +26,7 @@ console.log(weatherApp(currentDate));
 
 function showWeather(response) {
   console.log(response.data.name);
+  celsius = response.data.main.temp;
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
@@ -58,11 +59,15 @@ function search(event) {
 
 let form = document.querySelector("form");
 form.addEventListener("submit", search);
-
+let celsius = null;
 function convertToFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 57;
+
+  let fahrenheitLink = (temperature.innerHTML * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitLink);
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
 }
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
@@ -70,7 +75,10 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 function convertToCelsius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 14;
+
+  temperatureElement.innerHTML = Math.round(celsius);
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
 }
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
