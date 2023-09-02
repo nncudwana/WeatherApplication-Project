@@ -56,21 +56,20 @@ function search(event) {
   let city = document.querySelector("#city-input").value;
   searchCity(city);
 }
-
 let form = document.querySelector("form");
 form.addEventListener("submit", search);
 let celsius = null;
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
 function convertToFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
 
-  let fahrenheitLink = (temperature.innerHTML * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitLink);
+  let fahrenheitTemp = (temperature.innerHTML * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
 }
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 function convertToCelsius(event) {
   event.preventDefault();
