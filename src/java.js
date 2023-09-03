@@ -66,28 +66,6 @@ function search(event) {
 }
 let form = document.querySelector("form");
 form.addEventListener("submit", search);
-let celsius = null;
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-
-  let fahrenheitTemp = (temperature.innerHTML * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-}
-function convertToCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-
-  temperatureElement.innerHTML = Math.round(celsius);
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-}
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", convertToCelsius);
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
