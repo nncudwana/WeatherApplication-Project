@@ -25,14 +25,12 @@ function weatherApp(current) {
 console.log(weatherApp(currentDate));
 
 function getForecast(coorinates) {
-  console.log(coorinates);
   let apiKey = `o3380fbba4a2286659094de1450tf309`;
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coorinates.lat}&lon=${coorinates.lon}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showForecast);
 }
 
 function showWeather(response) {
-  console.log(response.data.name);
   celsius = response.data.main.temp;
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
