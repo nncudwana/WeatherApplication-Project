@@ -24,6 +24,13 @@ function weatherApp(current) {
 }
 console.log(weatherApp(currentDate));
 
+function getForecast(coorinates) {
+  console.log(coorinates);
+  let apiKey = `o3380fbba4a2286659094de1450tf309`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coorinates.lat}&lon=${coorinates.lon}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
+}
+
 function showWeather(response) {
   console.log(response.data.name);
   celsius = response.data.main.temp;
@@ -45,6 +52,7 @@ function showWeather(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   icon.setAttribute("alt", "response.data.weather[0].description;");
+  getForecast(response.data.coord);
 }
 function searchCity(city) {
   let apiKey = "3b023fa8d83fa415d28d3003da677334";
@@ -81,33 +89,48 @@ function convertToCelsius(event) {
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
-function showForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function showForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
 
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
               <div class="col-2">
-                ${day}
+                ${formatDay(forecastDay.time)}
                 <div>
                   <img
-                    src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                      forecastDay.condition.icon
+                    }.png"
                     alt=""
                     width="30" />
                   <div class="weather-forecast-temperature">
-                    <span class="minimum-temp">15°</span>
-                    <span class="maximum-temp">23°</span>
+                    <span class="minimum-temp">${Math.round(
+                      forecastDay.temperature.minimum
+                    )}°</span>
+                    <span class="maximum-temp">${Math.round(
+                      forecastDay.temperature.maximum
+                    )}°</span>
                   </div>
                 </div>
               </div>
             `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-showForecast();
+
 searchCity("Cape Town");
